@@ -38,3 +38,9 @@ def checkout(request):
 
 def laptop(request):
  return render(request, 'app/laptop.html')
+
+def TopWear(request):
+ return render(request, 'app/laptop.html')
+
+def BottomWear(request):
+ return render(request, 'app/laptop.html')

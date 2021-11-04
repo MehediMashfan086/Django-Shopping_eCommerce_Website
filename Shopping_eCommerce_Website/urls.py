@@ -14,4 +14,6 @@ urlpatterns = [
     path('registration/', views.customerregistration, name='customerregistration'),
     path('checkout/', views.checkout, name='checkout'),
     path('laptop/', views.laptop, name='laptop'),
+    path('twear/', views.TopWear, name='twear'),
+    path('bwear/', views.BottomWear, name='bwear'),
 ]
