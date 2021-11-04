@@ -35,3 +35,6 @@ def customerregistration(request):
 
 def checkout(request):
  return render(request, 'app/checkout.html')
+
+def laptop(request):
+ return render(request, 'app/laptop.html')
