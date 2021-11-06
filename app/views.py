@@ -3,8 +3,11 @@ from django.shortcuts import render
 def home(request):
  return render(request, 'app/home.html')
 
-def product_detail(request):
- return render(request, 'app/productdetail.html')
+def product_1_detail(request):
+ return render(request, 'app/product_1_detail.html')
+
+def product_2_detail(request):
+ return render(request, 'app/product_2_detail.html')
 
 def add_to_cart(request):
  return render(request, 'app/addtocart.html')
