@@ -27,6 +27,9 @@ def change_password(request):
 def mobile(request):
  return render(request, 'app/mobile.html')
 
+def laptop(request):
+ return render(request, 'app/laptop.html')
+
 def login(request):
  return render(request, 'app/login.html')
 
@@ -35,9 +38,6 @@ def customerregistration(request):
 
 def checkout(request):
  return render(request, 'app/checkout.html')
-
-def laptop(request):
- return render(request, 'app/laptop.html')
 
 def TopWear(request):
  return render(request, 'app/laptop.html')
