@@ -22,4 +22,5 @@ urlpatterns = [
     path('camera/', views.Camera, name='camera'),
     path('watch/', views.Watch, name='watch'),
     path('cosmetics/', views.Cosmetics, name='cosmetics'),
+    path('bag/', views.LadiesBag, name='bag'),
 ]
