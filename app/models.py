@@ -33,6 +33,10 @@ CATAGORY_CHOICES = (
     ('L','Laptop'),
     ('TW','Top Wear'),
     ('BW','Bottom Wear'),
+    ('C','Camera'),
+    ('W','Watch'),
+    ('B','Bag'),
+    ('C','Cosmetics'),
 )
 
 class Product(models.Model):
@@ -60,7 +64,7 @@ STATUS_CHOICES = (
     ('Packed','Packed'),
     ('On The way','On The way'),
     ('Delivered','Delivered'),
-    ('Canccel','Cancel'),
+    ('Cancel','Cancel'),
 )
 
 class OrderPlaced(models.Model):

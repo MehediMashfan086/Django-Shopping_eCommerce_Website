@@ -55,5 +55,5 @@ def Watch(request):
 def Cosmetics(request):
  return render(request, 'app/cosmetics.html')
 
-def LadiesBag(request):
+def Bag(request):
  return render(request, 'app/bag.html')
