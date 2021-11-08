@@ -45,3 +45,12 @@ def TopWear(request):
 
 def BottomWear(request):
  return render(request, 'app/laptop.html')
+
+def Camera(request):
+ return render(request, 'app/camera.html')
+
+def Watch(request):
+ return render(request, 'app/watch.html')
+
+def Cosmetics(request):
+ return render(request, 'app/cosmetics.html')

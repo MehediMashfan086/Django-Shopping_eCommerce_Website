@@ -19,4 +19,7 @@ urlpatterns = [
     path('checkout/', views.checkout, name='checkout'),
     path('twear/', views.TopWear, name='twear'),
     path('bwear/', views.BottomWear, name='bwear'),
+    path('camera/', views.Camera, name='camera'),
+    path('watch/', views.Watch, name='watch'),
+    path('cosmetics/', views.Cosmetics, name='cosmetics'),
 ]
