@@ -1,6 +1,9 @@
 from django.urls import path
 from app import views
+from app.views import *
+from django.contrib import admin
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', views.home),
     path('product-detail/', views.product_detail, name='product-detail'),
     path('cart/', views.add_to_cart, name='add-to-cart'),
