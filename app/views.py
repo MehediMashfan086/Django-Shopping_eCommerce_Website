@@ -2,12 +2,21 @@ from django.shortcuts import render
 from django.views import View
 from .models import *
 
-def home(request):
- return render(request, 'app/home.html')
+#def home(request):
+# return render(request, 'app/home.html')
 
 class ProductView(View):
     def get(self, request):
+        mobiles = Product.objects.filter(category= 'M')
+        laptops = Product.objects.filter(category= 'L')
         topwears = Product.objects.filter(category= 'TW')
+        bottomwears = Product.objects.filter(category= 'BW')
+        cameras = Product.objects.filter(category= 'CM')
+        watches = Product.objects.filter(category= 'W')
+        bags = Product.objects.filter(category= 'B')
+        cosmetics = Product.objects.filter(category= 'C')
+        return render(request, 'app/home.html', {'mobiles': mobiles, 'laptops': laptops, 
+            'topwears': topwears, 'bottomwears': bottomwears, 'cameras': cameras, 'watches': watches, 'bags': bags, 'cosmetics': cosmetics})
 
 def product_detail(request):
  return render(request, 'app/product_detail.html')
