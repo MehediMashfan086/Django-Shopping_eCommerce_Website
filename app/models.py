@@ -28,7 +28,7 @@ class Customer(models.Model):
 def __str__(self):
     return str(self.id)
 
-CATEGORY_CHOICES = (
+CATAGORY_CHOICES = (
     ('M','Mobile'),
     ('L','Laptop'),
     ('TW','Top Wear'),
@@ -45,7 +45,7 @@ class Product(models.Model):
     discounted_price = models.FloatField()
     description = models.TextField()
     brand = models.CharField(max_length=100)
-    category = models.CharField(choices=CATEGORY_CHOICES, max_length=10)
+    catagory = models.CharField(choices=CATAGORY_CHOICES, max_length=10)
     product_image = models.ImageField(upload_to = 'productimg')
 
 def __str__(self):
