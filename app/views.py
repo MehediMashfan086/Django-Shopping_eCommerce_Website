@@ -45,8 +45,12 @@ def orders(request):
 def change_password(request):
  return render(request, 'app/changepassword.html')
 
-def mobile(request):
- return render(request, 'app/mobile.html')
+def mobile(request, data = None):
+    if data == None:
+        mobiles = Product.objects.filter(category= 'M')
+    elif data =='Xiaomi' or data =='Samsung' or data =='Realme' or data =='Vivo' or data =='OnePlus':
+        mobiles = Product.objects.filter(category= 'M').filter
+    return render(request, 'app/mobile.html', {'mobiles': mobiles})
 
 def laptop(request):
  return render(request, 'app/laptop.html')
