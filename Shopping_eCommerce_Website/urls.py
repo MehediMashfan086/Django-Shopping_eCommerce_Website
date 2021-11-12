@@ -16,6 +16,7 @@ urlpatterns = [
     path('changepassword/', views.change_password, name='changepassword'),
     path('mobile/', views.mobile, name='mobile'),
     path('mobile/<slug:data>', views.mobile, name='mobiledata'),
+    path('laptop/<slug:data>', views.laptop, name='laptopdata'),
     path('laptop/', views.laptop, name='laptop'),
     path('login/', views.login, name='login'),
     path('registration/', views.customerregistration, name='customerregistration'),

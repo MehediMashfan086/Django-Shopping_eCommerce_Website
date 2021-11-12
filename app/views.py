@@ -52,8 +52,12 @@ def mobile(request, data = None):
         mobiles = Product.objects.filter(category= 'M').filter(brand = data)
     return render(request, 'app/mobile.html', {'mobiles': mobiles})
 
-def laptop(request):
- return render(request, 'app/laptop.html')
+def laptop(request, data = None):
+    if data == None:
+        laptops = Product.objects.filter(category= 'L')
+    elif data =='HP' or data =='Asus' or data =='Lenovo' or data =='Walton' or data =='Acer' or data == 'Avita':
+        laptops = Product.objects.filter(category= 'L').filter(brand = data)
+    return render(request, 'app/laptop.html', {'laptops': laptops})
 
 def login(request):
  return render(request, 'app/login.html')
