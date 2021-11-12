@@ -10,7 +10,8 @@
   <div class="col-sm-5 offset-sm-1">
    <h2>{{product.title}}</h2>
    <hr>
-   <p>Product Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, at. Dignissimos rerum incidunt temporibus laudantium. Rem, eveniet corporis. Itaque delectus quae nesciunt nemo, maiores minus deserunt vel. Vero, nulla quisquam!</p> <br>
+   <p>Brand: <b>{{product.brand}}</p></b> <br>
+   <p>{{product.description}}</p> <br>
    <h4>Tk. {{product.discounted_price}} <small class="fw-light text-decoration-line-through">{{product.selling_price}}</small></h4> <br>
    <a href="{% url 'add-to-cart' %}" class="btn btn-primary shadow px-5 py-2">Add to Cart</a>
    <a href="{% url 'buy-now' %}" class="btn btn-danger shadow px-5 py-2 ms-4">Buy Now</a>
