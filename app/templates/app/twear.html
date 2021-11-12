@@ -5,10 +5,29 @@
 <div class="container my-5">
  <div class="row">
   <div class="col-sm-3">
-   Side Bar for Top Wear Product
+   <div class="list-group">
+        <a href="{% url 'twear' %}" class="list-group-item list-group-item-action" aria-current="true">All Top Wears</a>
+        <a href="{% url 'tweardata' 'MH Fashion' %}" class="list-group-item list-group-item-action" aria-current="true">MH Fashion</a>
+        <a href="{% url 'tweardata' 'ABC Garments' %}" class="list-group-item list-group-item-action" aria-current="true">ABC Garments</a>
+        <a href="{% url 'tweardata' 'XYZ Shop' %}" class="list-group-item list-group-item-action" aria-current="true">XYZ Shop</a>
+        <a href="{% url 'tweardata' 'Freedom' %}" class="list-group-item list-group-item-action" aria-current="true">Freedom</a>
+   </div>
   </div>
-  <div class="col-sm-8 offset-sm-1">
-   Top Wear Product List
+  <div class="col-sm-8">
+    <div class="row">
+     {% for product in topwears %}
+        <div class="col-sm-4 text-center mb-4">
+         <a href={% url 'product-detail' product.id %} class="btn">
+          <div class="item">
+            <img src="{{product.product_image.url}}" alt="" height="300" class="">
+             <div class="fw-bold">{{product.title}}</div>
+             <div class="fw-bold">Tk. {{product.discounted_price}}
+             <small class="fw-light text-decoration-line-through">{{product.selling_price}}</small></div>
+          </div>
+         </a>
+        </div>
+      {% endfor %}
+    </div>
   </div>
  </div>
 </div>

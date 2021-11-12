@@ -68,11 +68,19 @@ def customerregistration(request):
 def checkout(request):
  return render(request, 'app/checkout.html')
 
-def TopWear(request):
- return render(request, 'app/laptop.html')
+def TopWear(request, data = None):
+    if data == None:
+        topwears = Product.objects.filter(category= 'TW')
+    elif data =='MH Fashion' or data =='ABC Garments' or data =='XYZ Shop' or data =='Freedom':
+        topwears = Product.objects.filter(category= 'TW').filter(brand = data)
+    return render(request, 'app/twear.html', {'topwears': topwears})
 
-def BottomWear(request):
- return render(request, 'app/laptop.html')
+def BottomWear(request, data = None):
+    if data == None:
+        bottomwears = Product.objects.filter(category= 'BW')
+    elif data =='MH Fashion' or data =='ABC Garments':
+        bottomwears = Product.objects.filter(category= 'BW').filter(brand = data)
+    return render(request, 'app/bwear.html', {'bottomwears': bottomwears})
 
 def Camera(request):
  return render(request, 'app/camera.html')
