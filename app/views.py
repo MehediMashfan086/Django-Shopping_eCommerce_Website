@@ -49,7 +49,7 @@ def mobile(request, data = None):
     if data == None:
         mobiles = Product.objects.filter(category= 'M')
     elif data =='Xiaomi' or data =='Samsung' or data =='Realme' or data =='Vivo' or data =='OnePlus':
-        mobiles = Product.objects.filter(category= 'M').filter
+        mobiles = Product.objects.filter(category= 'M').filter(brand = data)
     return render(request, 'app/mobile.html', {'mobiles': mobiles})
 
 def laptop(request):
