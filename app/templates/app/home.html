@@ -59,6 +59,20 @@
  </div>
 </div>
 <!-- End 1st Product Slider -->
+
+<!-- 2nd Product Slider -->
+<div class="mx-3">
+ <h2 class="text-danger">Mehedi's Shop Laptops</h2>
+ <!-- Slider 2 -->
+ <div class="owl-carousel" id="slider2">
+  {% for l in laptops %}
+  <a href="{% url 'product-detail' %}" class="btn"><div class="item"><img src="{{l.product_image.url}}" 
+  alt="" height="200px"><span class="fw-bold">{{l.title}}</span><br><span class="fs-5">Tk. {{l.discounted_price}}</span></div></a>
+  {% endfor %}
+ </div>
+</div>
+<!-- End 2nd Product Slider -->
+
 <!-- Payment Info Section -->
 <div class="container my-5">
  <div class="row">
@@ -94,17 +108,30 @@
 </div>
 <!-- End Payment Info Section -->
 
-<!-- 2nd Product Slider -->
+<!-- 3rd Product Slider -->
 <div class="mx-3">
- <h2 class="text-danger">Mehedi's Shop Laptops</h2>
- <!-- Slider 2 -->
- <div class="owl-carousel" id="slider2">
-  {% for l in laptops %}
-  <a href="{% url 'product-detail' %}" class="btn"><div class="item"><img src="{{l.product_image.url}}" 
-  alt="" height="200px"><span class="fw-bold">{{l.title}}</span><br><span class="fs-5">Tk. {{l.discounted_price}}</span></div></a>
+ <h2 class="text-danger">Mehedi's Shop Top Wears</h2>
+ <!-- Slider 3 -->
+ <div class="owl-carousel" id="slider3">
+  {% for t in topwears %}
+  <a href="{% url 'product-detail' %}" class="btn"><div class="item"><img src="{{t.product_image.url}}" 
+  alt="" height="200px"><span class="fw-bold">{{t.title}}</span><br><span class="fs-5">Tk. {{t.discounted_price}}</span></div></a>
   {% endfor %}
  </div>
 </div>
-<!-- End 2nd Product Slider -->
+<!-- End 3rd Product Slider -->
+
+<!-- 4th Product Slider -->
+<div class="mx-3">
+ <h2 class="text-danger">Mehedi's Shop Bottom Wears</h2>
+ <!-- Slider 4 -->
+ <div class="owl-carousel" id="slider4">
+  {% for b in bottomwears %}
+  <a href="{% url 'product-detail' %}" class="btn"><div class="item"><img src="{{b.product_image.url}}" 
+  alt="" height="200px"><span class="fw-bold">{{b.title}}</span><br><span class="fs-5">Tk. {{b.discounted_price}}</span></div></a>
+  {% endfor %}
+ </div>
+</div>
+<!-- End 4th Product Slider -->
 {% endblock main-content %}
 
