@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from .models import *
 from .forms import CustomerRegistrationForm
+from django.contrib import messages
 
 class ProductView(View):
     def get(self, request):
@@ -15,9 +16,6 @@ class ProductView(View):
         cosmetics = Product.objects.filter(category= 'C')
         return render(request, 'app/home.html', {'mobiles': mobiles, 'laptops': laptops, 
             'topwears': topwears, 'bottomwears': bottomwears, 'cameras': cameras, 'watches': watches, 'bags': bags, 'cosmetics': cosmetics})
-
-#def product_detail(request):
-# return render(request, 'app/product_detail.html')
 
 class ProductDetailView(View):
     def get(self, request, pk):
@@ -75,8 +73,10 @@ class CustomerRegistrationView(View):
     def post(self, request):
         form = CustomerRegistrationForm(request.POST)
         if form.is_valid():
+            messages.success(request, 'Congratulations!!! Registered Successfully....')
             form.save()
         return render(request, 'app/customer_registration.html', {'form':form})
+    
 def checkout(request):
  return render(request, 'app/checkout.html')
 
