@@ -71,7 +71,7 @@ def login(request):
  return render(request, 'app/login.html')
 
 def customerregistration(request):
- return render(request, 'app/customerregistration.html')
+ return render(request, 'app/customer_registration.html')
 
 def checkout(request):
  return render(request, 'app/checkout.html')
