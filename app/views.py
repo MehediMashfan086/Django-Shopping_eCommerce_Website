@@ -63,9 +63,6 @@ def laptop(request, data = None):
         laptops = Product.objects.filter(category= 'L').filter(discounted_price__gt=40000)
     return render(request, 'app/laptop.html', {'laptops': laptops})
 
-def login(request):
- return render(request, 'app/login.html')
-
 class CustomerRegistrationView(View):
     def get(self, request):
         form = CustomerRegistrationForm()
