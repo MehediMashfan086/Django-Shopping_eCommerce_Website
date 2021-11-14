@@ -1,7 +1,7 @@
 from django.urls import path
 from django.utils.translation import templatize
 from app import views
-from app.forms import LoginForm, MyPasswordChangeForm
+from app.forms import LoginForm, MyPasswordChangeForm, MyPasswordResetForm
 from app.views import *
 from django.contrib import admin
 from django.conf import settings
@@ -36,5 +36,6 @@ urlpatterns = [
     path('watch/', views.Watch, name='watch'),
     path('cosmetics/', views.Cosmetics, name='cosmetics'),
     path('bag/', views.Bag, name='bag'),
-    path('password_reset/', views.PasswordReset, name='password_reset'),
+    path('password_reset/', auth_views.PasswordResetView.as_view(template_name='app/password_reset.html', 
+         form_class=MyPasswordResetForm), name='password_reset'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
