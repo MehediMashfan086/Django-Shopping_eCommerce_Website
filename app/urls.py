@@ -22,6 +22,7 @@ urlpatterns = [
     path('laptop/<slug:data>', views.laptop, name='laptopdata'),
     path('accounts/login/', auth_views.LoginView.as_view(template_name='app/login.html', 
     authentication_form=LoginForm), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
     path('registration/', views.CustomerRegistrationView.as_view(), name='customer_registration'),
     path('checkout/', views.checkout, name='checkout'),
     path('twear/', views.TopWear, name='twear'),
