@@ -22,7 +22,7 @@ urlpatterns = [
     path('laptop/<slug:data>', views.laptop, name='laptopdata'),
     path('accounts/login/', auth_views.LoginView.as_view(template_name='app/login.html', 
     authentication_form=LoginForm), name='login'),
-    path('registration/', views.CustomerRegistrationView.as_view(), name='customerregistration'),
+    path('registration/', views.CustomerRegistrationView.as_view(), name='customer_registration'),
     path('checkout/', views.checkout, name='checkout'),
     path('twear/', views.TopWear, name='twear'),
     path('twear/<slug:data>', views.TopWear, name='tweardata'),
@@ -32,4 +32,5 @@ urlpatterns = [
     path('watch/', views.Watch, name='watch'),
     path('cosmetics/', views.Cosmetics, name='cosmetics'),
     path('bag/', views.Bag, name='bag'),
+    path('password_reset/', views.PasswordReset, name='password_reset'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

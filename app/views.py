@@ -41,6 +41,9 @@ def orders(request):
 def change_password(request):
  return render(request, 'app/changepassword.html')
 
+def PasswordReset(request):
+ return render(request, 'app/password_reset.html')
+
 def mobile(request, data = None):
     if data == None:
         mobiles = Product.objects.filter(category= 'M')
