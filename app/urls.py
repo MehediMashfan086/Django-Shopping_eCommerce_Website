@@ -1,7 +1,7 @@
 from django.urls import path
 from django.utils.translation import templatize
 from app import views
-from app.forms import LoginForm
+from app.forms import LoginForm, MyPasswordChangeForm
 from app.views import *
 from django.contrib import admin
 from django.conf import settings
@@ -21,8 +21,10 @@ urlpatterns = [
     path('laptop/', views.laptop, name='laptop'),
     path('laptop/<slug:data>', views.laptop, name='laptopdata'),
     path('accounts/login/', auth_views.LoginView.as_view(template_name='app/login.html', 
-    authentication_form=LoginForm), name='login'),
+        authentication_form=LoginForm), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
+    path('password_change/', auth_views.PasswordChangeView.as_view(template_name='app/password_change.html', 
+        form_class= MyPasswordChangeForm), name='password_change'),
     path('registration/', views.CustomerRegistrationView.as_view(), name='customer_registration'),
     path('checkout/', views.checkout, name='checkout'),
     path('twear/', views.TopWear, name='twear'),
