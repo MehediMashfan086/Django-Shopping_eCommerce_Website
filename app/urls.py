@@ -26,6 +26,8 @@ urlpatterns = [
         form_class= MyPasswordChangeForm, success_url='/password_change_done/'), name='password_change'),
     path('password_change_done/', auth_views.PasswordChangeDoneView.as_view(template_name='app/password_change_done.html'), 
          name='password_chaange_done'),
+    path('password_reset/', auth_views.PasswordResetView.as_view(template_name='app/password_reset.html', 
+         form_class=MyPasswordResetForm), name='password_reset'),
     path('registration/', views.CustomerRegistrationView.as_view(), name='customer_registration'),
     path('checkout/', views.checkout, name='checkout'),
     path('twear/', views.TopWear, name='twear'),
@@ -36,6 +38,4 @@ urlpatterns = [
     path('watch/', views.Watch, name='watch'),
     path('cosmetics/', views.Cosmetics, name='cosmetics'),
     path('bag/', views.Bag, name='bag'),
-    path('password_reset/', auth_views.PasswordResetView.as_view(template_name='app/password_reset.html', 
-         form_class=MyPasswordResetForm), name='password_reset'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
