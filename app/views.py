@@ -80,14 +80,14 @@ def checkout(request):
 def TopWear(request, data = None):
     if data == None:
         topwears = Product.objects.filter(category= 'TW')
-    elif data =='MH Fashion' or data =='ABC Garments' or data =='XYZ Shop' or data =='Freedom':
+    elif data =='MH_Fashion' or data =='ABC_Garments' or data =='XYZ_Shop' or data =='Freedom':
         topwears = Product.objects.filter(category= 'TW').filter(brand = data)
     return render(request, 'app/twear.html', {'topwears': topwears})
 
 def BottomWear(request, data = None):
     if data == None:
         bottomwears = Product.objects.filter(category= 'BW')
-    elif data =='MH Fashion' or data =='ABC Garments':
+    elif data =='MH_Fashion' or data =='ABC_Garments':
         bottomwears = Product.objects.filter(category= 'BW').filter(brand = data)
     return render(request, 'app/bwear.html', {'bottomwears': bottomwears})
 
