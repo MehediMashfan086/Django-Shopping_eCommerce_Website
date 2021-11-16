@@ -13,7 +13,11 @@
    <p>Brand: <b>{{product.brand}}</p></b> <br>
    <p><b>Description:</b> {{product.description}}</p> <br>
    <h4>Tk. {{product.discounted_price}} <small class="fw-light text-decoration-line-through">{{product.selling_price}}</small></h4> <br>
-   <a href="{% url 'add-to-cart' %}" class="btn btn-primary shadow px-5 py-2">Add to Cart</a>
+
+   <form action="add-to-cart">
+    <input type="hidden" name="product_id" value={{product.id}} id="product_id">
+    <button type="submit" class="btn btn-primary shadow px-5 py-2">Add to Cart</button>
+   </form>
    <a href="{% url 'buy-now' %}" class="btn btn-danger shadow px-5 py-2 ms-4">Buy Now</a>
    <h5 class="mt-5">Available Offers</h5>
    <ul>
