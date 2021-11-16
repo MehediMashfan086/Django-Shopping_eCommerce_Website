@@ -24,7 +24,7 @@ class ProductDetailView(View):
         
 
 def add_to_cart(request):
- return render(request, 'app/addtocart.html')
+ return render(request, 'app/add-to-cart.html')
 
 def buy_now(request):
  return render(request, 'app/buynow.html')
