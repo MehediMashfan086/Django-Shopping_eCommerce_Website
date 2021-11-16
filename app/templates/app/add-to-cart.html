@@ -9,11 +9,12 @@
   <div class="card">
    <div class="card-body">
     <h3>Cart</h3>
+    {% for cart in carts %}
     <div class="row">
-     <div class="col-sm-3 text-center align-self-center"><img src="{% static 'app/images/product/p1.jpg'%}" alt="" srcset="" class="img-fluid img-thumbnail shadow-sm" height="150" width="150"> </div>
+     <div class="col-sm-3 text-center align-self-center"><img src="{{cart.product.product_image.url}}" alt="" srcset="" class="img-fluid img-thumbnail shadow-sm" height="150" width="150"> </div>
      <div class="col-sm-9">
       <div>
-       <h5>Hand Watch</h5>
+       <h5>{{cart.product.title}}</h5>
        <p class="mb-2 text-muted small">Description: Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum quas, nihil vel velit sed, quos consequatur maiores odio libero eius est in mollitia quo minus dolorum culpa consectetur, ipsam unde!</p>
        <div class="my-3">
         <label for="quantity">Quantity:</label>
@@ -28,6 +29,7 @@
       </div>
      </div>
     </div>
+    {% endfor %}
     <hr class="text-muted">
     <div class="row my-5">
      <div class="col-sm-3 text-center align-self-center"> <img src="{% static 'app/images/product/p2.jpg'%}" alt="" srcset="" class="img-fluid img-thumbnail shadow-sm" height="150" width="150"></div>
