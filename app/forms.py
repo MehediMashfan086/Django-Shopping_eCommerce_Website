@@ -7,10 +7,10 @@ from django.contrib.auth import password_validation
 from app.models import Customer
 
 class CustomerRegistrationForm(UserCreationForm):
-    username = forms.CharField(label='Password', widget=forms.TextInput(attrs={'class':'form-control'}))
+    username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class':'form-control'}))
+    email = forms.CharField(required = True, widget=forms.EmailInput(attrs={'class':'form-control'}))
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class':'form-control'}))
     password2 = forms.CharField(label='Confirm Password (again)', widget=forms.PasswordInput(attrs={'class':'form-control'}))
-    email = forms.CharField(required = True, widget=forms.EmailInput(attrs={'class':'form-control'}))
 
 class Meta:
     model = User
