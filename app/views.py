@@ -1,8 +1,10 @@
+from django.http.response import JsonResponse
 from django.shortcuts import redirect, render
 from django.views import View
 from .models import *
 from .forms import CustomerRegistrationForm, CustomerProfileForm
 from django.contrib import messages
+from django.db.models import Q
 
 class ProductView(View):
     def get(self, request):
@@ -73,6 +75,27 @@ class ProfileView(View):
             reg.save()
             messages.success(request, 'Congratulations !! Your Profile Updates Successfully.')
         return render(request, 'app/profile.html', {'form':form, 'active': 'btn-primary'})    
+
+def plus_cart(request):
+    if request.method == 'GET':
+        prodt_id = request.GET['prodt_id']
+        c = Cart.objects.get(Q(product=prodt_id) & Q(user=request.user))
+        c.quantity += 1
+        c.save()
+        amount = 0.0
+        shipping_amount = 80.0
+        cart_product = [p for p in Cart.objects.all() if p.user == request.user]
+        for p in cart_product:
+            tempamount = (p.quantity * p.product.discounted_price)
+            amount += tempamount
+            totalamount = amount + shipping_amount
+                
+        data = {
+            'quantity': c.quantity,
+            'amount': amount,
+            'totalamount': totalamount
+        }
+        return JsonResponse(data)
         
 
 def address(request):
