@@ -45,8 +45,11 @@ def show_cart(request):
                 tempamount = (p.quantity * p.product.discounted_price)
                 amount += tempamount
                 totalamount = amount + shipping_amount
-        return render(request, 'app/add-to-cart.html', 
+            return render(request, 'app/add-to-cart.html', 
                       {'carts':cart, 'totalamount':totalamount, 'amount':amount, 'total_amount':total_amount})
+            
+        else:
+            return render(request, 'app/empty_cart.html')
 
 def buy_now(request):
  return render(request, 'app/buynow.html')
