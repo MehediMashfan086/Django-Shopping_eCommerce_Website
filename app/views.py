@@ -46,7 +46,7 @@ def show_cart(request):
                 amount += tempamount
                 totalamount = amount + shipping_amount
         return render(request, 'app/add-to-cart.html', 
-                      {'carts':cart, 'totalamount':totalamount, 'amount':'amount'})
+                      {'carts':cart, 'totalamount':totalamount, 'amount':amount, 'total_amount':total_amount})
 
 def buy_now(request):
  return render(request, 'app/buynow.html')
