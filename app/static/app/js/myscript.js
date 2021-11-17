@@ -33,6 +33,7 @@ $('.plus-cart').click(function(){
         },
         success: function(data){
             console.log(data)
+            console.log("Success")
         }
     })
 })

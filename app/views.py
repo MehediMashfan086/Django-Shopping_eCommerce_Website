@@ -79,6 +79,7 @@ class ProfileView(View):
 def plus_cart(request):
     if request.method == 'GET':
         prodt_id = request.GET['prodt_id']
+        print(prodt_id)
         c = Cart.objects.get(Q(product=prodt_id) & Q(user=request.user))
         c.quantity += 1
         c.save()
