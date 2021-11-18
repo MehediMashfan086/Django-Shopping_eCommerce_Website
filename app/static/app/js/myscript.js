@@ -34,6 +34,8 @@ $('.plus-cart').click(function(){
         },
         success: function(data){
             eml.innerText = data.quantity
+            document.getElementById("amount").innerText = data.amount
+            document.getElementById("totalamount").innerText = data.totalamount
         }
     })
 })
