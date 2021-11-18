@@ -79,9 +79,29 @@ class ProfileView(View):
 def plus_cart(request):
     if request.method == 'GET':
         prodt_id = request.GET['prodt_id']
-        print(prodt_id)
         c = Cart.objects.get(Q(product=prodt_id) & Q(user=request.user))
         c.quantity += 1
+        c.save()
+        amount = 0.0
+        shipping_amount = 80.0
+        cart_product = [p for p in Cart.objects.all() if p.user == request.user]
+        for p in cart_product:
+            tempamount = (p.quantity * p.product.discounted_price)
+            amount += tempamount
+            totalamount = amount + shipping_amount
+                
+        data = {
+            'quantity': c.quantity,
+            'amount': amount,
+            'totalamount': totalamount
+        }
+        return JsonResponse(data)
+
+def minus_cart(request):
+    if request.method == 'GET':
+        prodt_id = request.GET['prodt_id']
+        c = Cart.objects.get(Q(product=prodt_id) & Q(user=request.user))
+        c.quantity -= 1
         c.save()
         amount = 0.0
         shipping_amount = 80.0

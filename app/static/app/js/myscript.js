@@ -39,3 +39,21 @@ $('.plus-cart').click(function(){
         }
     })
 })
+
+$('.minus-cart').click(function(){
+    var id = $(this).attr("pid").toString();
+    var eml = this.parentNode.children[2]
+//    console.log(id)
+    $.ajax({
+        type: "GET",
+        url:"/minuscart",
+        data:{
+            prodt_id: id
+        },
+        success: function(data){
+            eml.innerText = data.quantity
+            document.getElementById("amount").innerText = data.amount
+            document.getElementById("totalamount").innerText = data.totalamount
+        }
+    })
+})
