@@ -20,17 +20,19 @@
     <h4>Select Shipping Address</h4>
     <hr>
     <form action="">
+    {% for ad in addrs %}
       <div class="card">
         <div class="card-body">
-        <h5>Mehedi Hasan</h5>
-        <p>Savar Dhaka Bangladesh</p>
+        <h5>{{ad.name}}</h5>
+        <p>{{ad.locality}}, {{ad.city}}, {{ad.state}}, {{ad.zipcode}}</p>
         </div>
       </div>
         <div class="form-check mt-2 mb-5">
           <input class="form-check-input" type="radio" value="">
           <label class="form-check-label fw-bold" for="">
-            Address: 1 </label>
+            Address: {{forloop.counter}} </label>
         </div>
+        {% endfor %}
         <div class="text-end">
           <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Continue</button>
         </div>
