@@ -140,7 +140,8 @@ def address(request):
  return render(request, 'app/address.html', {'addrs':addrs, 'active': 'btn-primary'})
 
 def orders(request):
- return render(request, 'app/orders.html')
+    op = OrderPlaced.objects.filter(user = request.user)
+    return render(request, 'app/orders.html', {'orser_placed': op})
 
 def PasswordReset(request):
  return render(request, 'app/password_reset.html')
