@@ -193,6 +193,17 @@ def checkout(request):
         totalamount = amount + shipping_amount
     return render(request, 'app/checkout.html', {'addrs':addrs, 
             'cart_items':cart_items ,'totalamount':totalamount})
+    
+def payment_done(request):
+    user = request.user
+    cust_id = request.GET.get('cust_id')
+    customer = Customer.objects.get(id=cust_id)
+    cart = Cart.objects.filter(user=user)
+    for c in cart:
+        OrderPlaced(user=user, customer=customer, 
+                product = c.product, quantity = c.quantity).save()
+        c.delete()
+    return redirect("orders")
 
 def TopWear(request, data = None):
     if data == None:

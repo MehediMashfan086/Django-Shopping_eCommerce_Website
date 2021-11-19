@@ -49,6 +49,7 @@ urlpatterns = [
     
     path('registration/', views.CustomerRegistrationView.as_view(), name='customer_registration'),
     path('checkout/', views.checkout, name='checkout'),
+    path('paymentdone/', views.payment_done, name='paymentdone'),
     path('twear/', views.TopWear, name='twear'),
     path('twear/<slug:data>', views.TopWear, name='tweardata'),
     path('bwear/', views.BottomWear, name='bwear'),
