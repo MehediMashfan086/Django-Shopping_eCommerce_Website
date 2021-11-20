@@ -115,7 +115,7 @@
  <div class="owl-carousel" id="slider3">
   {% for tw in topwears %}
   <a href="{% url 'product-detail' tw.id %}" class="btn"><div class="item"><img src="{{tw.product_image.url}}" 
-  alt="" height="200px"><span class="fw-bold">{{t.title}}</span><br><span class="fs-5">Tk. {{tw.discounted_price}}</span></div></a>
+  alt="" height="200px"><span class="fw-bold">{{tw.title}}</span><br><span class="fs-5">Tk. {{tw.discounted_price}}</span></div></a>
   {% endfor %}
  </div>
 </div>
@@ -128,10 +128,12 @@
  <div class="owl-carousel" id="slider4">
   {% for bw in bottomwears %}
   <a href="{% url 'product-detail' bw.id %}" class="btn"><div class="item"><img src="{{bw.product_image.url}}" 
-  alt="" height="200px"><span class="fw-bold">{{b.title}}</span><br><span class="fs-5">Tk. {{bw.discounted_price}}</span></div></a>
+  alt="" height="200px"><span class="fw-bold">{{bw.title}}</span><br><span class="fs-5">Tk. {{bw.discounted_price}}</span></div></a>
   {% endfor %}
  </div>
 </div>
 <!-- End 4th Product Slider -->
+
+
 {% endblock main-content %}
 

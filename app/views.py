@@ -233,8 +233,16 @@ def BottomWear(request, data = None):
         bottomwears = Product.objects.filter(category= 'BW').filter(brand = data)
     return render(request, 'app/bwear.html', {'bottomwears': bottomwears})
 
-def Camera(request):
- return render(request, 'app/camera.html')
+def Camera(request, data = None):
+    if data == None:
+        cameras = Product.objects.filter(category= 'CM')
+    elif data =='Nikon' or data =='Canon' or data =='Sony' or data =='Samsung':
+        cameras = Product.objects.filter(category= 'CM').filter(brand = data)
+    elif data == 'below':
+        cameras = Product.objects.filter(category= 'CM').filter(discounted_price__lt=20000)
+    elif data == 'above':
+        cameras = Product.objects.filter(category= 'CM').filter(discounted_price__gt=20000)
+    return render(request, 'app/camera.html', {'cameras': cameras})
 
 def Watch(request):
  return render(request, 'app/watch.html')
