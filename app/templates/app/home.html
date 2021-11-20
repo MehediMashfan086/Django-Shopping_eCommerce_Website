@@ -134,6 +134,65 @@
 </div>
 <!-- End 4th Product Slider -->
 
+<!-- Payment Info Section -->
+<div class="container my-5">
+ <div class="row">
+  <div class="col-sm-3">
+   <div class="card mb-3">
+     <div class="card-body">
+     <img src="{% static 'app/images/payavail/bkash.jpg' %}" alt="" width="640" height="254" srcset="" class="img-fluid">
+     </div>
+   </div>
+  </div>
+  <div class="col-sm-3">
+   <div class="card mb-3">
+     <div class="card-body">
+      <img src="{% static 'app/images/payavail/nogod.png' %}" alt="" width="640" height="254" srcset="" class="img-fluid">
+     </div>
+   </div>
+  </div>
+  <div class="col-sm-3">
+   <div class="card mb-3">
+     <div class="card-body">
+      <img src="{% static 'app/images/payavail/nb.jpg' %}" alt="" width="640" height="254" srcset="" class="img-fluid">
+     </div>
+   </div>
+  </div>
+  <div class="col-sm-3">
+   <div class="card mb-3">
+     <div class="card-body">
+      <img src="{% static 'app/images/payavail/rocket.png' %}" alt="" srcset="" class="img-fluid">
+     </div>
+   </div>
+  </div>
+ </div>
+</div>
+<!-- End Payment Info Section -->
 
+<!-- 5th Product Slider -->
+<div class="mx-3">
+ <h2 class="text-danger">Mehedi's Shop Cameras</h2>
+ <!-- Slider 3 -->
+ <div class="owl-carousel" id="slider3">
+  {% for cm in cameras %}
+  <a href="{% url 'product-detail' cm.id %}" class="btn"><div class="item"><img src="{{cm.product_image.url}}" 
+  alt="" height="200px"><span class="fw-bold">{{cm.title}}</span><br><span class="fs-5">Tk. {{cm.discounted_price}}</span></div></a>
+  {% endfor %}
+ </div>
+</div>
+<!-- End 5th Product Slider -->
+
+<!-- 6th Product Slider -->
+<div class="mx-3">
+ <h2 class="text-danger">Mehedi's Shop Watches</h2>
+ <!-- Slider 3 -->
+ <div class="owl-carousel" id="slider3">
+  {% for w in watches %}
+  <a href="{% url 'product-detail' w.id %}" class="btn"><div class="item"><img src="{{w.product_image.url}}" 
+  alt="" height="200px"><span class="fw-bold">{{w.title}}</span><br><span class="fs-5">Tk. {{w.discounted_price}}</span></div></a>
+  {% endfor %}
+ </div>
+</div>
+<!-- End 6th Product Slider -->
 {% endblock main-content %}
 

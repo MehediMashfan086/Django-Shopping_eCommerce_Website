@@ -244,8 +244,16 @@ def Camera(request, data = None):
         cameras = Product.objects.filter(category= 'CM').filter(discounted_price__gt=20000)
     return render(request, 'app/camera.html', {'cameras': cameras})
 
-def Watch(request):
- return render(request, 'app/watch.html')
+def Watch(request, data = None):
+    if data == None:
+        watches = Product.objects.filter(category= 'W')
+    elif data =='Fastrack' or data =='Tissot' or data =='Titan' or data =='Rolex':
+        watches = Product.objects.filter(category= 'W').filter(brand = data)
+    elif data == 'below':
+        watches = Product.objects.filter(category= 'W').filter(discounted_price__lt=5000)
+    elif data == 'above':
+        watches = Product.objects.filter(category= 'W').filter(discounted_price__gt=5000)
+    return render(request, 'app/watch.html', {'watches': watches})
 
 def Cosmetics(request):
  return render(request, 'app/cosmetics.html')
