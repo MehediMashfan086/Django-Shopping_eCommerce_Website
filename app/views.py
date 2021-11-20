@@ -160,7 +160,7 @@ def PasswordReset(request):
 def mobile(request, data = None):
     if data == None:
         mobiles = Product.objects.filter(category= 'M')
-    elif data =='Xiaomi' or data =='Samsung' or data =='Realme' or data =='Vivo' or data =='OnePlus':
+    elif data =='Xiaomi' or data =='Samsung' or data =='Realme' or data =='Vivo' or data =='OnePlus' or data =='Itel':
         mobiles = Product.objects.filter(category= 'M').filter(brand = data)
     elif data == 'below':
         mobiles = Product.objects.filter(category= 'M').filter(discounted_price__lt=20000)
