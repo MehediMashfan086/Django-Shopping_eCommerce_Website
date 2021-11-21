@@ -10,6 +10,7 @@ from django.utils.decorators import method_decorator
 
 class ProductView(View):
     def get(self, request):
+        totalitem = 0
         mobiles = Product.objects.filter(category= 'M')
         laptops = Product.objects.filter(category= 'L')
         topwears = Product.objects.filter(category= 'TW')
@@ -18,18 +19,23 @@ class ProductView(View):
         watches = Product.objects.filter(category= 'W')
         bags = Product.objects.filter(category= 'B')
         cosmetics = Product.objects.filter(category= 'C')
+        if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
         return render(request, 'app/home.html', {'mobiles': mobiles, 'laptops': laptops, 
-            'topwears': topwears, 'bottomwears': bottomwears, 'cameras': cameras, 'watches': watches, 'bags': bags, 'cosmetics': cosmetics})
+            'topwears': topwears, 'bottomwears': bottomwears, 'cameras': cameras, 'watches': watches, 
+            'bags': bags, 'cosmetics': cosmetics, 'totalitem': totalitem})
 
 class ProductDetailView(View):
     def get(self, request, pk):
+        totalitem = 0
         product = Product.objects.get(pk = pk)
         item_already_in_cart = False
         if request.user.is_authenticated:
+            totalitem = len(Cart.objects.filter(user=request.user))
             item_already_in_cart = Cart.objects.filter(Q(product = product.id)
                                 & Q(user=request.user)).exists()
         return render(request, 'app/product_detail.html', {'product': product,
-            'item_already_in_cart': item_already_in_cart})
+            'item_already_in_cart': item_already_in_cart, 'totalitem': totalitem})
         
 
 @login_required
