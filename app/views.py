@@ -40,15 +40,17 @@ class ProductDetailView(View):
 
 @login_required
 def add_to_cart(request):
- user = request.user
- product_id = request.GET.get('prodt_id')
- product=Product.objects.get(id=product_id)
- Cart(user=user, product=product).save()
- return redirect('/cart')
+    user = request.user
+    product_id = request.GET.get('prodt_id')
+    product=Product.objects.get(id=product_id)
+    Cart(user=user, product=product).save()
+    return redirect('/cart')
 
 @login_required
 def show_cart(request):
+    totalitem = 0
     if request.user.is_authenticated:
+        totalitem = len(Cart.objects.filter(user=request.user))
         user = request.user
         cart = Cart.objects.filter(user=user)
         # print(cart)
@@ -63,7 +65,8 @@ def show_cart(request):
                 amount += tempamount
                 totalamount = amount + shipping_amount
             return render(request, 'app/add-to-cart.html', 
-                      {'carts':cart, 'totalamount':totalamount, 'amount':amount, 'total_amount':total_amount})
+                      {'carts':cart, 'totalamount':totalamount, 'amount':amount, 
+                       'total_amount':total_amount, 'totalitem': totalitem})
             
         else:
             return render(request, 'app/empty_cart.html')
@@ -262,8 +265,24 @@ def Watch(request, data = None):
         watches = Product.objects.filter(category= 'W').filter(discounted_price__gt=5000)
     return render(request, 'app/watch.html', {'watches': watches})
 
-def Cosmetics(request):
- return render(request, 'app/cosmetics.html')
+def Bag(request, data = None):
+    if data == None:
+        bags = Product.objects.filter(category= 'B')
+    elif data =='DeepEnterprises' or data =='OBag' or data =='LeatherMark':
+        bags = Product.objects.filter(category= 'B').filter(brand = data)
+    elif data == 'below':
+        bags = Product.objects.filter(category= 'B').filter(discounted_price__lt=1000)
+    elif data == 'above':
+        bags = Product.objects.filter(category= 'B').filter(discounted_price__gt=1000)
+    return render(request, 'app/bag.html', {'bags': bags})
 
-def Bag(request):
- return render(request, 'app/bag.html')
+def Cosmetics(request, data = None):
+    if data == None:
+        cosmetics = Product.objects.filter(category= 'C')
+    elif data =='MAC' or data =='MegaLast' or data =='Garnier' or data =='CleanNClear':
+        cosmetics = Product.objects.filter(category= 'C').filter(brand = data)
+    elif data == 'below':
+        bagcosmeticss = Product.objects.filter(category= 'C').filter(discounted_price__lt=1000)
+    elif data == 'above':
+        cosmetics = Product.objects.filter(category= 'C').filter(discounted_price__gt=1000)
+    return render(request, 'app/cosmetics.html', {'cosmetics': cosmetics})

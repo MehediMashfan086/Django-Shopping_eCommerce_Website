@@ -31,8 +31,10 @@ urlpatterns = [
     path('twear/<slug:data>', views.TopWear, name='tweardata'),
     path('bwear/', views.BottomWear, name='bwear'),
     path('bwear/<slug:data>', views.BottomWear, name='bweardata'),
-    path('cosmetics/', views.Cosmetics, name='cosmetics'),
     path('bag/', views.Bag, name='bag'),
+    path('bag/<slug:data>', views.Bag, name='bagdata'),
+    path('cosmetics/', views.Cosmetics, name='cosmetics'),
+    path('cosmetics/<slug:data>', views.Cosmetics, name='cosmeticsdata'),
     
     path('accounts/login/', auth_views.LoginView.as_view(template_name='app/login.html', 
         authentication_form=LoginForm), name='login'),

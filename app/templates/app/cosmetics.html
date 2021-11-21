@@ -5,10 +5,31 @@
 <div class="container my-5">
  <div class="row">
   <div class="col-sm-3">
-   Side Bar for Cosmetics filter
+   <div class="list-group">
+        <a href="{% url 'cosmetics' %}" class="list-group-item list-group-item-action" aria-current="true">All Bags</a>
+        <a href="{% url 'cosmeticsdata' 'MAC' %}" class="list-group-item list-group-item-action" aria-current="true">MAC</a>
+        <a href="{% url 'cosmeticsdata' 'MegaLast' %}" class="list-group-item list-group-item-action" aria-current="true">MegaLast</a>
+        <a href="{% url 'cosmeticsdata' 'Garnier' %}" class="list-group-item list-group-item-action" aria-current="true">Garnier</a>
+        <a href="{% url 'cosmeticsdata' 'CleanNClear' %}" class="list-group-item list-group-item-action" aria-current="true">CleanNClear</a>
+        <a href="{% url 'cosmeticsdata' 'below' %}" class="list-group-item list-group-item-action" aria-current="true">Below Tk. 500</a>
+        <a href="{% url 'cosmeticsdata' 'above' %}" class="list-group-item list-group-item-action" aria-current="true">Above Tk. 500</a>
+   </div>
   </div>
-  <div class="col-sm-8 offset-sm-1">
-   Cosmetics Product List
+  <div class="col-sm-8">
+    <div class="row">
+     {% for product in cosmetics %}
+        <div class="col-sm-4 text-center mb-4">
+         <a href={% url 'product-detail' product.id %} class="btn">
+          <div class="item">
+            <img src="{{product.product_image.url}}" alt="" height="300" class="">
+             <div class="fw-bold">{{product.title}}</div>
+             <div class="fw-bold">Tk. {{product.discounted_price}}
+             <small class="fw-light text-decoration-line-through">{{product.selling_price}}</small></div>
+          </div>
+         </a>
+        </div>
+      {% endfor %}
+    </div>
   </div>
  </div>
 </div>
